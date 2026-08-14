@@ -1075,6 +1075,10 @@ class Envs:
     SGLANG_MINIMAX_M3_FUSED_SWIGLU_MXFP8 = EnvBool(False)
     SGLANG_MINIMAX_M3_FUSED_MOE_COMBINE = EnvBool(False)
 
+    # MiniMax-M3 sparse prefill: optimized _gqa_share_sparse_fwd_kernel body --
+    # skips the causal mask where provably unneeded, and does the P.V MFMA in fp8.
+    SGLANG_MINIMAX_GQA_SHARE_SPARSE_FWD_OPT = EnvBool(False)
+
     # GEMM / kernel fusion
     SGLANG_OPT_FP8_WO_A_GEMM = EnvBool(True)
     SGLANG_OPT_BF16_FP32_GEMM_ALGO = EnvStr("cublas")
